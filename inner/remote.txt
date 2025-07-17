@@ -9,3 +9,6 @@ git push origin master
 
 git clone <url>
 저장소를 복제해 온다.
+
+git pull <name> <branch>
+git pull origin master

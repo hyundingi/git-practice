@@ -65,3 +65,44 @@ git clone [레파지토리 링크]
 git pull origin master
 ```
 
+### revert / reset
+| git revert
+올라가 있는 커밋을 되돌리고 싶다
+>> 특정 커밋을 없었던 일로 만드는 작업
+무작정 없애는 것이 아니라 특정 커밋을 되돌리는 새로운 커밋이 생김
+
+```
+git revert [commit 번호]
+```
+
+* 번호는 `git log`를 통해서 확인 할 수 있음
+공백을 활용해 여러 커밋을 한꺼번에 실행 취소 할 수 있음
+[번호]..[번호]를 활용해서 범위 내에 커밋 취소 할 수 있음
+
+
+| git reset
+특정 커밋으로 되돌아가는 작업
+- 특정 커밋으로 되돌아 갔을 때, 되돌아간 커밋 이후의 커밋들은 모두 삭제됨
+
+```
+git reset [옵션] <commit 번호>
+```
+
+옵션 리스트
+1. --soft
+- 삭제된 커밋 기록을 staging area에 남김
+2. --mixed
+- 삭제된 커밋 기록을 working directory에 남김 (기본 옵션 값)
+3. --hard
+- 삭제된 커밋 기록을 남기지 않음 
+- git reflog를 통해 지워진 commit을 조회하여 복구 가능함
+
+| git restore
+modified 상태의 파일 전으로 되돌리기
+- working directory에서 파일을 수정한 뒤, 파일의 수정 사항을 취소하고 원래 모습대로 되돌림
+
+*[staging area에 올라간 파일을 unstage 하기]*
+1. git rm --cached 
+- 커밋이 존재하지 않을 경우
+2. git restore --staged 
+- 커밋이 존재하는 경우
